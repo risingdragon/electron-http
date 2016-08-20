@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>HTTP Requester</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+	<div class="container">
+
+		<h3>HTTP Requester</h3>
+
+		<div class="panel panel-success">
+			<div class="panel-heading">Request</div>
+			<div class="panel-body">
+				<form id="request-form" class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">URL</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="url" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">User Agent</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="ua" value="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Method</label>
+						<div class="col-sm-9">
+							<label class="radio-inline">
+								<input type="radio" name="method" value="GET" checked>GET</label>
+							<label class="radio-inline">
+								<input type="radio" name="method" value="POST">POST</label>
+							<label class="radio-inline">
+								<input type="radio" name="method" value="PUT">PUT</label>
+							<label class="radio-inline">
+								<input type="radio" name="method" value="DELETE">DELETE</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Authorization</label>
+						<div class="col-sm-9 form-inline">
+							<input type="text" class="form-control" name="bauser" value="" size="10">
+							:
+							<input type="text" class="form-control" name="bapw" value="" size="20">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">
+							Header
+							<button type="button" name="header-add-btn" class="btn btn-success btn-sm">
+								<i class="glyphicon glyphicon-plus"></i>
+							</button>
+						</label>
+						<div class="col-sm-9" id="headers">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Parameter
+							<button type="button" name="param-add-btn" class="btn btn-success btn-sm">
+								<i class="glyphicon glyphicon-plus"></i>
+							</button>
+						</label>
+						<div class="col-sm-9" id="params">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="text-center">
+							<button type="submit" class="btn btn-sm btn-primary">
+								<i class="glyphicon glyphicon-send"></i>
+								Send
+							</button>
+							<button type="button" class="btn btn-sm btn-success" name="save-btn">
+								<i class="glyphicon glyphicon-save"></i>
+								Save
+							</button>
+							<button type="button" class="btn btn-sm btn-info" name="open-json-btn">
+								<i class="glyphicon glyphicon glyphicon-new-window"></i>
+								JSON
+							</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<div id="response-panel" class="panel panel-warning collapse">
+			<div class="panel-heading">Response</div>
+			<div class="panel-body">
+				<pre id="response-block">
+				</pre>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="hide">
+		<div class="form-inline headerbox">
+			<input type="text" class="form-control" name="header_names[]" value="" size="10"> :
+			<input type="text" class="form-control" name="header_values[]" value="" size="30">
+			<button type="button" name="delete-btn" class="btn btn-danger btn-sm">
+				<i class="glyphicon glyphicon-trash"></i>
+			</button>
+		</div>
+		<div class="form-inline parambox">
+			<input type="text" class="form-control" name="names[]" value="" size="10"> :
+			<textarea class="form-control" name="values[]" value="" cols="30" rows="2"></textarea>
+			<button type="button" name="delete-btn" class="btn btn-danger btn-sm">
+				<i class="glyphicon glyphicon-trash"></i>
+			</button>
+		</div>
+		<form id="saveform" method="post" action="">
+			<input type="hidden" name="action" value="save">
+			<input type="hidden" name="json" value="">
+		</form>
+	</div>
+
+	<div id="jsondialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">JSONデータ</h4>
+			</div>
+			<div class="modal-body">
+			<textarea class="form-control" name="jsontext" rows="10"></textarea>
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary" name="appy-json-btn">適用</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="bower_components/jquery/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "electron-http",
+  "version": "1.0.0",
+  "description": "HTTP Requester",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/risingdragon/electron-http.git"
+  },
+  "author": "Y.Hasegawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/risingdragon/electron-http/issues"
+  },
+  "homepage": "https://github.com/risingdragon/electron-http#readme"
+}

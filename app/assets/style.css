@@ -1,0 +1,14 @@
+div.parambox, div.headerbox {
+	border: 1px dotted #999999;
+	padding: 5px;
+	background: #ffffcc;
+	margin-top: -1px;
+}
+
+div.parambox:first-child, div.headerbox:first:child {
+	margin-top: 0px;
+}
+
+input.form-control, textarea.form-control {
+	font-size: 100%;
+}

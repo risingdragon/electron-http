@@ -1,0 +1,21 @@
+{
+  "name": "electron-http",
+  "description": "HTTP requester",
+  "main": "main.js",
+  "authors": [
+    "Y.Hasegawa"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "bootstrap": "^3.3.7"
+  }
+}

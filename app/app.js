@@ -157,13 +157,11 @@ window.onload = () => {
 		ipcRenderer.send('save', JSON.stringify(getFormData()))
 	})
 
-	try {
-		setJsonValues(
-			fs.readFileSync(__dirname + '/settings.json', { encoding: 'utf8' })
-		)
-	} catch (err) {
-		console.log(err)
-	}
+	ipcRenderer.on('set-settings', (e, jsonText) => {
+		setJsonValues(jsonText)
+	})
+
+	ipcRenderer.send('load-settings')
 
 	FormUtil.setDroppable('body', setJsonValues)
 }

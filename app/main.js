@@ -3,7 +3,7 @@ const fs = require('fs')
 
 let win = null
 let winSize = null
-let settingFile = __dirname + '/settings.json'
+let settingFile = electron.app.getPath('userData') + '/settings.json'
 
 electron.app.on('window-all-closed', () => {
 	if (process.platform != 'darwin') {
@@ -22,7 +22,7 @@ electron.app.on('ready', () => {
 			height: 600
 		}
 	}
-	
+
 	win = new electron.BrowserWindow({
 		width: size.width,
 		height: size.height
@@ -72,6 +72,16 @@ electron.ipcMain.on('save', (e, text) => {
 			})
 		}
 	)
+})
+
+electron.ipcMain.on('load-settings', (e) => {
+	try {
+		e.sender.send(
+			'set-settings',
+			fs.readFileSync(settingFile, { encoding: 'utf8' })
+		)
+	} catch (err) {
+	}
 })
 
 electron.ipcMain.on('save-settings', (e, formdata) => {

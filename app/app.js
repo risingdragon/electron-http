@@ -84,6 +84,7 @@ window.onload = () => {
 
 		var req = null
 		if (options.protocol == 'https:') {
+			options.rejectUnauthorized = false
 			req = https.request(options, callback)
 		} else {
 			req = http.request(options, callback)
